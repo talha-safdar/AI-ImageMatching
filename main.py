@@ -34,7 +34,7 @@ def match_image(image_path, image_paths, model, threshold=0.01):
     return None
 
 root = tk.Tk()
-root.title("AI-Based Image Matching System")
+root.title("VisualMatch AI")
 
 def upload_image():
     file_path = filedialog.askopenfilename()

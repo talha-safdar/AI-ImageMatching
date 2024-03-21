@@ -10,7 +10,7 @@ from pathlib import Path
 # Initialize ResNet50 model for feature extraction
 model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
 
-images_path = Path('images/')
+images_path = Path('images/') # local directory with images
 image_paths = [str(image) for image in images_path.glob('*.jpg')]
 
 def extract_features(img_path, model):

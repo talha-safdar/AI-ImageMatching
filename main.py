@@ -5,40 +5,13 @@ from PIL import Image, ImageTk
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.preprocessing import image
 from scipy.spatial.distance import cosine
+from pathlib import Path
 
 # Initialize ResNet50 model for feature extraction
 model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
 
-image_paths = [r'C:\LHU\AI\images\cat\cat_0000.jpg', 
-               r'C:\LHU\AI\images\cat\cat_0001.jpg',
-               r'C:\LHU\AI\images\cat\cat_0002.jpg',
-               r'C:\LHU\AI\images\cat\cat_0003.jpg',
-               r'C:\LHU\AI\images\cat\cat_0004.jpg',
-               r'C:\LHU\AI\images\cat\cat_0005.jpg',
-               r'C:\LHU\AI\images\cat\cat_0006.jpg',
-               r'C:\LHU\AI\images\cat\cat_0007.jpg',
-               r'C:\LHU\AI\images\cat\cat_0008.jpg',
-               r'C:\LHU\AI\images\cat\cat_0009.jpg',
-               r'C:\LHU\AI\images\cat\cat_0011.jpg',
-               r'C:\LHU\AI\images\cat\cat_0012.jpg',
-               r'C:\LHU\AI\images\cat\cat_0013.jpg',
-               r'C:\LHU\AI\images\cat\cat_0014.jpg',
-               r'C:\LHU\AI\images\cat\cat_0015.jpg',
-               r'C:\LHU\AI\images\cat\cat_0016.jpg',
-               r'C:\LHU\AI\images\cat\cat_0017.jpg',
-               r'C:\LHU\AI\images\cat\cat_0018.jpg',
-               r'C:\LHU\AI\images\cat\cat_0019.jpg',
-               r'C:\LHU\AI\images\cat\cat_0020.jpg',
-               r'C:\LHU\AI\images\cat\cat_0021.jpg',
-               r'C:\LHU\AI\images\cat\cat_0022.jpg',
-               r'C:\LHU\AI\images\cat\cat_0023.jpg',
-               r'C:\LHU\AI\images\cat\cat_0024.jpg',
-               r'C:\LHU\AI\images\cat\cat_0025.jpg',
-               r'C:\LHU\AI\images\cat\cat_0026.jpg',
-               r'C:\LHU\AI\images\cat\cat_0027.jpg',
-               r'C:\LHU\AI\images\cat\cat_0028.jpg',
-               r'C:\LHU\AI\images\cat\cat_0029.jpg',
-               r'C:\LHU\AI\images\cat\cat_0030.jpg']
+images_path = Path('images/')
+image_paths = [str(image) for image in images_path.glob('*.jpg')]
 
 def extract_features(img_path, model):
     img = image.load_img(img_path, target_size=(224, 224))
